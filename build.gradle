@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'application' // Allows you to run the app via Gradle
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+run {
+    standardInput = System.in
+}
+repositories {
+    mavenCentral() // Tells Gradle where to find libraries
+}
+
+dependencies {
+    // Automatically handles downloading Jackson and its dependencies
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.0'
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+application {
+    // Replace with your actual main class name (e.g., 'com.package.Main')
+    mainClass = 'Main'
+}
+
+test {
+    useJUnitPlatform()
+}

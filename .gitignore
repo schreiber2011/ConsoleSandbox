@@ -4,6 +4,20 @@
 # Log files
 *.log
 
+# Gradle temporary files and build artifacts
+.gradle
+
+# Stop Gradle from tracking the local wrapper distribution
+# (Optional: some teams keep these, but they can be large)
+.gradle-wrapper/
+
+# If you use the Gradle Build Cache
+.build-cache/
+
+# User-specific Gradle properties (like credentials)
+gradle.properties
+!gradle-wrapper.j
+
 # Package Files (JARs are usually generated from source)
 *.jar
 *.war
