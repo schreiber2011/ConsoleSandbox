@@ -98,6 +98,7 @@ public class Main {
     }
 
     private static void testStringEncodeNDecode() {
+        System.out.println("Original: [" + "\"hello\", \"world\"" + "]");
         // Encode
         String encoded = StringEncodeNDecode.encode(Arrays.asList("hello", "world"));
         System.out.println("Encoded: " + encoded);
@@ -107,6 +108,7 @@ public class Main {
         System.out.println("Decoded: " + decoded);
 
 
+        System.out.println("Original: [" + "\"5,3#\", \"safe,pass#word\", \"!!!\"" + "]");
         // Encode
         encoded = StringEncodeNDecode.encode(Arrays.asList("5,3#", "safe,pass#word", "!!!"));
         System.out.println("Encoded: " + encoded);
@@ -115,6 +117,7 @@ public class Main {
         decoded = StringEncodeNDecode.decode(encoded);
         System.out.println("Decoded: " + decoded);
 
+        System.out.println("Original: [" + "\"\", \"a\", \"bc\", \"def\"" + "]");
         // Encode
         encoded = StringEncodeNDecode.encode(Arrays.asList("", "a", "bc", "def"));
         System.out.println("Encoded: " + encoded);
