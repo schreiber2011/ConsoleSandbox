@@ -51,13 +51,28 @@ public class Main {
     }
 
     private static void testCountTopKElements() {
-        int[] input = new int[] {1, 2, 2, 3, 3, 3};
+        // List of test cases (input array, k, and a description)
+        Object[][] tests = {
+                {new int[]{1, 1, 1, 2, 2, 3}, 2, "Standard case (1 occurs 3x, 2 occurs 2x)"},
+                {new int[]{1}, 1, "Single element"},
+                {new int[]{7, 7, 7, 7}, 1, "All elements identical"},
+                {new int[]{1, 2, 3, 4}, 2, "All frequencies are equal (any 2 are correct)"},
+                {new int[]{-1, -1, -2, -2, -2, 0}, 2, "Negative numbers and zero"},
+                {new int[]{1, 2, 1, 2, 1, 2, 3, 1, 3, 2}, 2, "Mixed occurrences"}
+        };
 
-        int[] result = CountTopKElement.topKFrequent(input, 2);
+        for (Object[] test : tests) {
+            int[] input = (int[]) test[0];
+            int k = (int) test[1];
+            String desc = (String) test[2];
 
-        System.out.println(Arrays.toString(result));
+            int[] result = CountTopKElement.topKFrequent(input, k);
+
+            System.out.println("Test: " + desc);
+            System.out.println("Input:  " + Arrays.toString(input) + " | k=" + k);
+            System.out.println("Result: " + Arrays.toString(result) + "\n");
+        }
     }
-
     private static void testFormatCountryCodeAreByHackerHank() {
         // In Java, we use List.of and Map.entry as an equivalent to C# Tuple literals
         List<Map.Entry<String, String>> testCases = List.of(
@@ -88,13 +103,32 @@ public class Main {
     }
 
     private static void testGroupAnagramsByNeetCode() {
-        String[] strs = {"act", "pots", "tops", "cat", "stop", "hat"};
+        // Array of test cases: Each case is a String array
+        String[][] testCases = {
+                {"act", "pots", "tops", "cat", "stop", "hat"}, // Standard case
+                {"eat", "tea", "tan", "ate", "nat", "bat"},    // Classic anagram case
+                {"", ""},                                      // Empty strings
+                {"a"},                                         // Single character
+                {"boo", "bob"},                                // Same length, not anagrams
+                {"listen", "silent", "hello", "world"}         // Long words vs unique words
+        };
 
-        List<List<String>> result1 = GroupAnnagramsByNeetcode.groupAnagrams(strs);
-        List<List<String>> result2 = GroupAnnagramsByNeetcode.groupAnagramsOptmized(strs);
+        for (int i = 0; i < testCases.length; i++) {
+            String[] input = testCases[i];
 
-        System.out.println(result1);
-        System.out.println(result2);
+            System.out.println("--- Test Case " + (i + 1) + " ---");
+            System.out.println("Input: " + Arrays.toString(input));
+
+            List<List<String>> result1 = GroupAnnagramsByNeetcode.groupAnagrams(input);
+            List<List<String>> result2 = GroupAnnagramsByNeetcode.groupAnagramsOptmized(input);
+
+            System.out.println("Standard:  " + result1);
+            System.out.println("Optimized: " + result2);
+
+            // Quick check to see if both methods produce the same number of groups
+            boolean sameSize = result1.size() == result2.size();
+            System.out.println("Group Count Match: " + sameSize + "\n");
+        }
     }
 
     private static void testStringEncodeNDecode() {
@@ -128,4 +162,3 @@ public class Main {
     }
 
 }
-
