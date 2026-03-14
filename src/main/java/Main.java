@@ -1,5 +1,7 @@
+import application.CountTopKElement;
 import application.FormatCountryCodeAreByHackerHank;
 import application.GroupAnnagramsByNeetcode;
+import application.StringEncodeNDecode;
 
 import java.util.*;
 
@@ -12,6 +14,8 @@ public class Main {
             System.out.println("Select a test to run:");
             System.out.println("1. HackerRank Country Code Format");
             System.out.println("2. NeetCode Group Anagrams");
+            System.out.println("3. NeetCode Counting top K elements");
+            System.out.println("4. NeetCode String encode and decode");
             System.out.println("0. Exit");
             System.out.print("\nEnter choice (1 or 2): ");
 
@@ -27,6 +31,12 @@ public class Main {
                 case "2":
                     testGroupAnagramsByNeetCode();
                     break;
+                case "3":
+                    testCountTopKElements();
+                    break;
+                case "4":
+                    testStringEncodeNDecode();
+                    break;
                 default:
                     System.out.println("Invalid selection.");
                     break;
@@ -39,6 +49,15 @@ public class Main {
         }
         scanner.close();
     }
+
+    private static void testCountTopKElements() {
+        int[] input = new int[] {1, 2, 2, 3, 3, 3};
+
+        int[] result = CountTopKElement.topKFrequent(input, 2);
+
+        System.out.println(Arrays.toString(result));
+    }
+
     private static void testFormatCountryCodeAreByHackerHank() {
         // In Java, we use List.of and Map.entry as an equivalent to C# Tuple literals
         List<Map.Entry<String, String>> testCases = List.of(
@@ -74,8 +93,35 @@ public class Main {
         List<List<String>> result1 = GroupAnnagramsByNeetcode.groupAnagrams(strs);
         List<List<String>> result2 = GroupAnnagramsByNeetcode.groupAnagramsOptmized(strs);
 
-        System.out.println(result1.toString());
-        System.out.println(result2.toString());
+        System.out.println(result1);
+        System.out.println(result2);
+    }
+
+    private static void testStringEncodeNDecode() {
+        // Encode
+        String encoded = StringEncodeNDecode.encode(Arrays.asList("hello", "world"));
+        System.out.println("Encoded: " + encoded);
+
+        // Decode
+        List<String> decoded = StringEncodeNDecode.decode(encoded);
+        System.out.println("Decoded: " + decoded);
+
+
+        // Encode
+        encoded = StringEncodeNDecode.encode(Arrays.asList("5,3#", "safe,pass#word", "!!!"));
+        System.out.println("Encoded: " + encoded);
+
+        // Decode
+        decoded = StringEncodeNDecode.decode(encoded);
+        System.out.println("Decoded: " + decoded);
+
+        // Encode
+        encoded = StringEncodeNDecode.encode(Arrays.asList("", "a", "bc", "def"));
+        System.out.println("Encoded: " + encoded);
+
+        // Decode
+        decoded = StringEncodeNDecode.decode(encoded);
+        System.out.println("Decoded: " + decoded);
     }
 
 }
